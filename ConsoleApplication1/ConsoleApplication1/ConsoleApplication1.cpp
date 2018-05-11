@@ -15,6 +15,11 @@ void myFunction(AbstractClassExample* child)
 	child->MyMethod();
 }
 
+void dodaj(int x, int y)
+{
+	cout << endl << x + y;
+}
+
 
 int main()
 {
@@ -26,8 +31,14 @@ int main()
 	Child1 child1;
 	Child2 child2;
 	
+	
+
 	myFunction(parent);
 	myFunction(&child2);
+	
+	dodaj(5, 4);
+	
+	
 	char a;
 	cin >> a;
     return 0;
