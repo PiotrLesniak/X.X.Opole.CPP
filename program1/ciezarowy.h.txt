@@ -1,0 +1,76 @@
+class Ciezarowy : public Samochod
+{
+private:
+	double Ladownosc;
+	int LiczOsi;
+	bool UrzSamWyl;
+public:
+	Ciezarowy();
+	Ciezarowy(string marka, int pojemnosc, double ladownosc, int liczOsi, bool urzSamWyl);
+	double getLadownosc();
+	int getLiczOsi();
+	string getUrzSamWyl();
+	void setLadownosc(double ladownosc);
+	void setLiczOsi(int liczOsi);
+	void setUrzSamWyl(bool uszSamWyl);
+	friend ostream& operator<< (ostream &wy, Ciezarowy &cz);
+};
+
+Ciezarowy::Ciezarowy() :Samochod()
+{
+	setLadownosc(0);
+	setLiczOsi(0);
+	setUrzSamWyl(0);
+}
+
+Ciezarowy::Ciezarowy(string marka, int pojemnosc, double ladownosc, int liczOsi, bool urzSamWyl) :Samochod(marka, pojemnosc)
+{
+	setLadownosc(ladownosc);
+	setLiczOsi(liczOsi);
+	setUrzSamWyl(urzSamWyl);
+}
+
+double Ciezarowy::getLadownosc()
+{
+	return Ladownosc;
+}
+
+int Ciezarowy::getLiczOsi()
+{
+	return LiczOsi;
+}
+
+string Ciezarowy::getUrzSamWyl()
+{
+	if (UrzSamWyl == true)
+		return "Tak";
+	else
+		return "Nie";
+}
+
+void Ciezarowy::setLadownosc(double ladownosc)
+{
+	Ladownosc = ladownosc;
+}
+
+void Ciezarowy::setLiczOsi(int liczOsi)
+{
+	LiczOsi = liczOsi;
+}
+
+void Ciezarowy::setUrzSamWyl(bool uszSamWyl)
+{
+	UrzSamWyl = uszSamWyl;
+}
+
+ostream& operator<< (ostream &wy, Ciezarowy &cz)
+{
+	wy << "Marka: " << cz.getMarka() << endl;
+	wy << "Pojemnosc: " << cz.getPojemnosc() << endl;
+	wy << "£adownoœæ: " << cz.getLadownosc() << endl;
+	wy << "Liczba osi: " << cz.getLiczOsi() << endl;
+	wy << "Urz¹dzanie samo wy³adowuj¹ce: " << cz.getUrzSamWyl() << endl;
+	wy << cz.getWlasciciel();
+
+	return wy;
+}

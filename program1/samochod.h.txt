@@ -1,0 +1,100 @@
+#include <iostream>
+#include <string>
+#include "stdafx.h"
+class Samochod
+{
+private:
+	string Marka;
+	int Pojemnosc;
+	Osoba Wlasciciel;
+public:
+	Samochod();
+	Samochod(string marka, int pojemnosc, Osoba wlasciciel);
+	Samochod(string marka, int pojemnosc);
+	string getMarka();
+	int getPojemnosc();
+	Osoba getWlasciciel();
+	void setMarka(string marka);
+	void setPojemnosc(int pojemnosc);
+	void assignWlasciciel(Osoba Wlasciciel);
+	friend istream& operator>> (istream &we, Samochod &sm);
+	friend ostream& operator<< (ostream &wy, Samochod &sm);
+};
+
+Samochod::Samochod()
+{
+	setMarka("");
+	setPojemnosc(0);
+	Osoba _new;
+	assignWlasciciel(_new);
+}
+
+Samochod::Samochod(string marka, int pojemnosc, Osoba wlasciciel)
+{
+	setMarka(marka);
+	setPojemnosc(pojemnosc);
+	assignWlasciciel(wlasciciel);
+}
+
+Samochod::Samochod(string marka, int pojemnosc)
+{
+	setMarka(marka);
+	setPojemnosc(pojemnosc);
+}
+
+string Samochod::getMarka()
+{
+	if (Marka.size() == 0)
+		return "-- brak --";
+	else
+		return Marka;
+}
+
+int Samochod::getPojemnosc()
+{
+	return Pojemnosc;
+}
+
+Osoba Samochod::getWlasciciel()
+{
+	return Wlasciciel;
+}
+
+void Samochod::setMarka(string marka)
+{
+	Marka = marka;
+}
+
+void Samochod::setPojemnosc(int pojemnosc)
+{
+	Pojemnosc = pojemnosc;
+}
+
+void Samochod::assignWlasciciel(Osoba wlasciciel)
+{
+	Wlasciciel = wlasciciel;
+}
+
+istream& operator>> (istream &we, Samochod &sm)
+{
+	cout << "Podaj marke: ";
+	string marka;
+	we >> marka;
+	sm.setMarka(marka);
+
+	cout << "Podaj pojemnosc silnika: ";
+	int poj;
+	we >> poj;
+	sm.setPojemnosc(poj);
+
+	we >> sm.Wlasciciel;
+	return we;
+}
+
+ostream& operator<< (ostream &wy, Samochod &sm)
+{
+	wy << "Marka: " << sm.getMarka() << endl;
+	wy << "Pojemnosc: " << sm.getPojemnosc() << endl;
+	wy << sm.getWlasciciel();
+	return wy;
+}
