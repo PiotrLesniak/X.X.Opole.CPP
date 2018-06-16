@@ -58,7 +58,7 @@ int main()
 
 	cout << "STREET - SetArial 100" << endl;
 	s1->SetArial(100);
-	cout << "NUMBER = " << s1->GetArial() << endl;
+	cout << "ARIAL = " << s1->GetArial() << endl;
 
 	cout << "STREET SetName Z" << endl;
 	s1->SetName(new char('Z'));
